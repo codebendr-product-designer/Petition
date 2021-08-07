@@ -49,8 +49,8 @@ struct ContentView: View {
                                 
                             }
                             .padding(.top, 1)
-                            
-                            ProgressView()
+                            ProgressView(value: 0.2)
+                                .tint(.green)
                                 .progressViewStyle(.linear)
                         }
                     }
