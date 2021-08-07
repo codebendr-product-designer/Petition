@@ -13,8 +13,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("✊🏿").font(.title)
-                Text("Let\'s Enact Change").font(.title).bold()
+                
+                TitleView()
+                
                 List(petitons) { petition in
                     VStack {
     //                    Text("\(petition.title): ").bold() +
