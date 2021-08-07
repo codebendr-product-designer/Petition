@@ -12,17 +12,21 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(petitons) {
-                Text("\($0.title): ").bold() +
-                Text($0.body)
-                
-            }
-            .navigationTitle("Pettiton")
-            .task {
-                do {
-                    inbox = try await inbox()
-                } catch {
-                    print(error.localizedDescription)
+            VStack {
+                Text("✊🏿").font(.title)
+                Text("Let\'s Enact Change").font(.title).bold()
+                List(petitons) { petition in
+                    VStack {
+    //                    Text("\(petition.title): ").bold() +
+    //                    Text(petition.body)
+                        HStack(alignment: .center) {
+                            Text("🔐").font(.largeTitle)
+                            
+                            VStack {
+                            Text(petition.title).bold()
+                            }
+                        }
+                    }
                 }
             }
         }
