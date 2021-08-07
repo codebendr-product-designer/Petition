@@ -20,12 +20,35 @@ struct ContentView: View {
                     VStack {
                         HStack {
                             Text("🔐").font(.largeTitle)
-                            
-                            VStack {
-                            Text(petition.title).bold()
+                            VStack(alignment: .leading) {
+                                Text(petition.title).bold()
+                                HStack {
+                                    
+                                    Image(systemName: "person.3.sequence.fill")
+                                       
+                                    Text("540")
+                                        .foregroundColor(.green).font(.body).bold()
+                                    Text("/").bold()
+                                    Text("340,987").bold()
+                                    
+                                    HStack {
+                                        Spacer()
+                                        Text("STATUS").font(.system(size: 10)).bold()
+                                        Text("-").font(.caption).bold()
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .resizable()
+                                            .frame(width: 15, height: 15)
+                                            .foregroundColor(.green)
+                                            .padding(.trailing, 10)
+                                    }
+                                
+                                 
+                                }
+                                .padding(.top, 1)
                             }
                         }
                     }
+                    .padding(.top, 20)
                 }
                
           //  .navigationTitle("Petition")
@@ -34,14 +57,15 @@ struct ContentView: View {
                     do {
                         petitons = try await petitions()
                         print("petitons", petitons)
-
+                        
                     } catch {
-    //                    print(error.localizedDescription)
+                        //                    print(error.localizedDescription)
                         print("error", error)
                         
                     }
+                }
             }
-            }
+            Spacer()
         }
         
     }
