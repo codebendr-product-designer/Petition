@@ -29,10 +29,3 @@ extension URLSession {
     }
 }
 
-struct Message: Codable, Identifiable {
-    let id: Int
-    let user: String
-    let text: String 
-}
-
-

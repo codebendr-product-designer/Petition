@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct Petition: Codable, Identifiable {
-    let id: Int
+    let id: String
     let title, body: String
-
 }

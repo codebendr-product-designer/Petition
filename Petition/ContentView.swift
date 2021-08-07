@@ -28,11 +28,24 @@ struct ContentView: View {
                         }
                     }
                 }
+    //            .navigationTitle("Petition")
+                .task {
+                    print("task")
+                    do {
+                        petitons = try await petitions()
+                        print("petitons", petitons)
+
+                    } catch {
+    //                    print(error.localizedDescription)
+                        print("error", error)
+                        
+                    }
+            }
             }
         }
     }
     
-    func inbox() async throws -> [Petition] {
+    func petitions() async throws -> [Petition] {
         try await URLSession.shared.decode(from: URL(string: "https://hws.dev/petitions.json")!)
     }
 }
