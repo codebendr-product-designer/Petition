@@ -17,41 +17,47 @@ struct ContentView: View {
                 TitleView()
                 
                 List(petitons) { petition in
-                    VStack {
-                        HStack {
-                            Text("🔐").font(.largeTitle)
-                            VStack(alignment: .leading) {
-                                Text(petition.title).bold()
-                                HStack {
-                                    
-                                    Image(systemName: "person.3.sequence.fill")
-                                       
-                                    Text("540")
-                                        .foregroundColor(.green).font(.body).bold()
-                                    Text("/").bold()
-                                    Text("340,987").bold()
-                                    
-                                    HStack {
-                                        Spacer()
-                                        Text("STATUS").font(.system(size: 10)).bold()
-                                        Text("-").font(.caption).bold()
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .resizable()
-                                            .frame(width: 15, height: 15)
-                                            .foregroundColor(.green)
-                                            .padding(.trailing, 10)
-                                    }
+                    
+                    HStack {
+                        
+                        Text("🔐").font(.largeTitle)
+                        
+                        VStack(alignment: .leading) {
+                            
+                            Text(petition.title).bold()
+                            HStack {
                                 
-                                 
-                                }
-                                .padding(.top, 1)
+                                Image(systemName: "person.3.sequence.fill")
+                                    .padding(.trailing, 5)
+                                
+                                Text("540")
+                                    .foregroundColor(.green).font(.body).bold()
+                                    .padding(.all, -6)
+                                Text("/ 340,987").bold()
+                                
+                                
+                                Spacer()
+                                Text("STATUS").font(.system(size: 10)).bold()
+                                Text("-").font(.caption).bold()
+                                Image(systemName: "checkmark.circle.fill")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.green)
+                                    .padding(.trailing, 10)
+                                
+                                
+                                
                             }
+                            .padding(.top, 1)
+                            
+                            ProgressView()
+                                .progressViewStyle(.linear)
                         }
                     }
-                    .padding(.top, 20)
+                    
                 }
-               
-          //  .navigationTitle("Petition")
+                
+                //  .navigationTitle("Petition")
                 .task {
                     print("task")
                     do {
@@ -65,9 +71,9 @@ struct ContentView: View {
                     }
                 }
             }
-            Spacer()
+            
         }
-        
+        Spacer()
     }
     
     func petitions() async throws -> [Petition] {
