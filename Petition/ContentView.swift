@@ -18,9 +18,7 @@ struct ContentView: View {
                 
                 List(petitons) { petition in
                     VStack {
-    //                    Text("\(petition.title): ").bold() +
-    //                    Text(petition.body)
-                        HStack(alignment: .center) {
+                        HStack {
                             Text("🔐").font(.largeTitle)
                             
                             VStack {
@@ -29,7 +27,8 @@ struct ContentView: View {
                         }
                     }
                 }
-    //            .navigationTitle("Petition")
+               
+          //  .navigationTitle("Petition")
                 .task {
                     print("task")
                     do {
@@ -44,6 +43,7 @@ struct ContentView: View {
             }
             }
         }
+        
     }
     
     func petitions() async throws -> [Petition] {
@@ -53,6 +53,21 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().ignoresSafeArea(.all)
+    }
+}
+
+struct TitleView: View {
+    var body: some View {
+        VStack {
+            Text("✊🏿").font(.system(size: 48))
+            Text("Let\'s Enact Change")
+                .font(.title)
+                .bold()
+                .multilineTextAlignment(.center)
+            
+        }
+        .frame(width: 155)
+        .padding()
     }
 }
