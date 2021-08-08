@@ -12,3 +12,5 @@ struct Petition: Codable, Identifiable {
     let id: String
     let title, body: String
 }
+
+
