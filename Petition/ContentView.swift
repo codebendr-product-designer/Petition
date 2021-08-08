@@ -83,7 +83,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().ignoresSafeArea(.all)
+        ContentView()
+            .environment(\.colorScheme, .dark)
+            .ignoresSafeArea(.all)
     }
 }
 
