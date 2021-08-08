@@ -9,4 +9,5 @@ import SwiftUI
 
 extension Color {
     static let progess: Color = .init("ProgressColor")
+    static let accent: Color = .init("AccentColor")
 }
