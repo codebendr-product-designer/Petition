@@ -105,7 +105,7 @@ struct PetitionView: View {
                 }
                 .padding(.top, 1)
                 
-                ProgressView(value: 0.2)
+                ProgressView(value: Double(petition.signatureCount), total: Double(petition.signatureThreshold))
                     .tint(.progess)
                     .progressViewStyle(.linear)
                 
