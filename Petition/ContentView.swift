@@ -83,12 +83,11 @@ struct TitleView: View {
 
 struct PetitionView: View {
     let petition: Petition
-    let emoji = ["🔐","🧘🏿‍♂️","🧨","💡","🚁","🎯","🎨", "🛺", "🚦"].randomElement()!
-    
+
     var body: some View {
         HStack {
             
-            Text("\(emoji)").font(.largeTitle)
+            Text(petition.emoji).font(.largeTitle)
             
             VStack(alignment: .leading) {
                 
@@ -141,11 +140,11 @@ struct PetitionDetailView: View {
     let petition: Petition
     
     var body: some View {
-        VStack {
+        ScrollView {
             
-            Text("🔐").font(.system(size: 48))
+            Text(petition.emoji).font(.system(size: 60))
             
-            VStack(alignment: .leading) {
+            VStack {
                 
                 Text(petition.title)
                     .bold()
@@ -154,6 +153,9 @@ struct PetitionDetailView: View {
                     
                 
                 PetitionProgressView(petition: petition)
+                
+                Text(petition.body)
+                
                 
             }
         }
