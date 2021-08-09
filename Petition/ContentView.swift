@@ -157,6 +157,8 @@ struct PetitionDetailView: View {
                 
             }
         }
-        .listRowBackground(Color.background)
+        .padding()
+        .navigationTitle("Details")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
