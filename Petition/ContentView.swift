@@ -17,78 +17,19 @@ struct ContentView: View {
                 TitleView()
                 
                 List(petitons) { petition in
-                    
-                    HStack {
-        
-                        Text("🔐").font(.largeTitle)
-                        
-                        VStack(alignment: .leading) {
-                            
-                            Text(petition.title)
-                                .foregroundColor(.title)
-                                .bold()
-                            
-                            HStack {
-                                
-                                Image(systemName: "person.3.sequence.fill")
-                                    .foregroundColor(.accent)
-                                    .padding(.trailing, 5)
-                                
-                                Text("540")
-                                    .foregroundColor(.green).font(.body).bold()
-                                    .padding(.all, -6)
-                                
-                                Text("/ 340,987")
-                                    .foregroundColor(.accent)
-                                    .bold()
-                                
-                                Spacer()
-                                
-                                Text("STATUS")
-                                    .foregroundColor(.accent)
-                                    .font(.system(size: 10))
-                                    .bold()
-                                
-                                Text("-")
-                                    .foregroundColor(.accent)
-                                    .font(.caption).bold()
-                                
-                                Image(systemName: "checkmark.circle.fill")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(.green)
-                                    .padding(.trailing, 10)
-                                
-                            }
-                            .padding(.top, 1)
-                            
-                            ProgressView(value: 0.2)
-                                .tint(.progess)
-                                .progressViewStyle(.linear)
-                            
-                        }
-                    }
-                .listRowBackground(Color.background)
-                    
+                    PetitionView(petition: petition)
                 }
-                //  .navigationTitle("Petition")
                 .task {
-                    print("task")
                     do {
                         petitons = try await petitions()
-                        print("petitons", petitons)
                         
                     } catch {
-                        //                    print(error.localizedDescription)
-                        print("error", error)
-                        
+                       print(error.localizedDescription)
                     }
                 }
             }
-            
-            
+            .navigationBarHidden(true)
         }
-        
     }
     
     func petitions() async throws -> [Petition] {
@@ -125,6 +66,64 @@ struct TitleView: View {
             
         }
         .frame(width: 155)
-        .padding()
+        
+    }
+}
+
+struct PetitionView: View {
+    let petition: Petition
+    
+    var body: some View {
+        HStack {
+            
+            Text("🔐").font(.largeTitle)
+            
+            VStack(alignment: .leading) {
+                
+                Text(petition.title)
+                    .foregroundColor(.title)
+                    .bold()
+                
+                HStack {
+                    
+                    Image(systemName: "person.3.sequence.fill")
+                        .foregroundColor(.accent)
+                        .padding(.trailing, 5)
+                    
+                    Text("540")
+                        .foregroundColor(.green).font(.body).bold()
+                        .padding(.all, -6)
+                    
+                    Text("/ 340,987")
+                        .foregroundColor(.accent)
+                        .bold()
+                    
+                    Spacer()
+                    
+                    Text("STATUS")
+                        .foregroundColor(.accent)
+                        .font(.system(size: 10))
+                        .bold()
+                    
+                    Text("-")
+                        .foregroundColor(.accent)
+                        .font(.caption).bold()
+                    
+                    Image(systemName: "checkmark.circle.fill")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                        .foregroundColor(.green)
+                        .padding(.trailing, 10)
+                    
+                }
+                .padding(.top, 1)
+                
+                ProgressView(value: 0.2)
+                    .tint(.progess)
+                    .progressViewStyle(.linear)
+                
+            }
+        }
+        .listRowBackground(Color.background)
     }
 }
