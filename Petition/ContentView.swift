@@ -92,11 +92,11 @@ struct PetitionView: View {
                         .foregroundColor(.accent)
                         .padding(.trailing, 5)
                     
-                    Text("540")
+                    Text("\(petition.signatureCount)")
                         .foregroundColor(.green).font(.body).bold()
                         .padding(.all, -6)
                     
-                    Text("/ 340,987")
+                    Text("/ \(petition.signatureThreshold)")
                         .foregroundColor(.accent)
                         .bold()
                     
