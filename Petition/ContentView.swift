@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var petitons = [Petition]()
+    @State private var petitions = [Petition]()
     
     var body: some View {
         NavigationView {
@@ -16,20 +16,21 @@ struct ContentView: View {
                 
                 TitleView()
                 
-                List(petitons) {
-                    PetitionView(petition: $0)
+                List(petitions) { petition in
+                    NavigationLink(destination: PetitionDetailView(petition: petition)) {
+                        PetitionView(petition: petition)
+                    }
                 }
                 .task {
                     do {
-                        petitons = try await petitions()
+                        petitions = try await petitions()
                         
                     } catch {
                        print(error.localizedDescription)
                     }
                 }
             }
-         //   .navigationTitle(Text)
-         //   .navigationBarHidden(true)
+           .navigationBarHidden(true)
         }
     }
     
@@ -72,6 +73,49 @@ struct TitleView: View {
 }
 
 struct PetitionView: View {
+    let petition: Petition
+    
+    var body: some View {
+        HStack {
+            
+            Text("🔐").font(.largeTitle)
+            
+            VStack(alignment: .leading) {
+                
+                Text(petition.title)
+                    .foregroundColor(.title)
+                    .bold()
+                
+                HStack {
+                    
+                    Image(systemName: "person.3.sequence.fill")
+                        .foregroundColor(.accent)
+                        .padding(.trailing, 5)
+                    
+                    Text("540")
+                        .foregroundColor(.green).font(.body).bold()
+                        .padding(.all, -6)
+                    
+                    Text("/ 340,987")
+                        .foregroundColor(.accent)
+                        .bold()
+                    
+                    Spacer()
+                    
+                }
+                .padding(.top, 1)
+                
+                ProgressView(value: 0.2)
+                    .tint(.progess)
+                    .progressViewStyle(.linear)
+                
+            }
+        }
+        .listRowBackground(Color.background)
+    }
+}
+
+struct PetitionDetailView: View {
     let petition: Petition
     
     var body: some View {
