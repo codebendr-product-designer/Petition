@@ -23,7 +23,7 @@ struct ContentView: View {
                 }
                 .task {
                     do {
-                        petitions = try await petitions()
+                        petitions = try await petitions().shuffled()
                         
                     } catch {
                        print(error.localizedDescription)
