@@ -16,8 +16,8 @@ struct ContentView: View {
                 
                 TitleView()
                 
-                List(petitons) { petition in
-                    PetitionView(petition: petition)
+                List(petitons) {
+                    PetitionView(petition: $0)
                 }
                 .task {
                     do {
@@ -28,7 +28,8 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarHidden(true)
+         //   .navigationTitle(Text)
+         //   .navigationBarHidden(true)
         }
     }
     
@@ -99,21 +100,6 @@ struct PetitionView: View {
                         .bold()
                     
                     Spacer()
-                    
-                    Text("STATUS")
-                        .foregroundColor(.accent)
-                        .font(.system(size: 10))
-                        .bold()
-                    
-                    Text("-")
-                        .foregroundColor(.accent)
-                        .font(.caption).bold()
-                    
-                    Image(systemName: "checkmark.circle.fill")
-                        .resizable()
-                        .frame(width: 15, height: 15)
-                        .foregroundColor(.green)
-                        .padding(.trailing, 10)
                     
                 }
                 .padding(.top, 1)
