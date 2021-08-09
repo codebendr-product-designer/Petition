@@ -74,11 +74,15 @@ struct TitleView: View {
 
 struct PetitionView: View {
     let petition: Petition
+    let emoji = ["🔐","🧘🏿‍♂️","🧨","💡","🚁","🎯","🎨", "🛺", "🚦"].randomElement()!
+    var isBelowThreshold: Bool {
+        petition.signatureCount < 40000
+    }
     
     var body: some View {
         HStack {
             
-            Text("🔐").font(.largeTitle)
+            Text("\(emoji)").font(.largeTitle)
             
             VStack(alignment: .leading) {
                 
@@ -93,7 +97,7 @@ struct PetitionView: View {
                         .padding(.trailing, 5)
                     
                     Text("\(petition.signatureCount)")
-                        .foregroundColor(.green).font(.body).bold()
+                        .foregroundColor(isBelowThreshold ? .pink : .progess).font(.body).bold()
                         .padding(.all, -6)
                     
                     Text("/ \(petition.signatureThreshold)")
@@ -106,13 +110,17 @@ struct PetitionView: View {
                 .padding(.top, 1)
                 
                 ProgressView(value: Double(petition.signatureCount), total: Double(petition.signatureThreshold))
-                    .tint(.progess)
+                    .tint(isBelowThreshold ? .pink : .progess)
                     .progressViewStyle(.linear)
                 
             }
         }
         .listRowBackground(Color.background)
     }
+    
+ 
+    
+    
 }
 
 struct PetitionDetailView: View {
