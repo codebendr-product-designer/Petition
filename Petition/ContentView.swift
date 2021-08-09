@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
                 .task {
                     do {
-                        petitions = try await petitions().shuffled()
+                        petitions = try await petitions().sorted { $0.signatureCount > $1.signatureCount }
                     } catch {
                        print(error.localizedDescription)
                     }
@@ -96,6 +96,11 @@ struct PetitionView: View {
                     .bold()
                 
                 PetitionProgressView(petition: petition)
+                
+                Text("CREATED - 01/09/2019")
+                    .font(.caption2)
+                    .bold()
+                    .opacity(0.3)
           
                 
             }
