@@ -10,7 +10,10 @@ import SwiftUI
 
 struct Petition: Codable, Identifiable {
     let id, title, body: String
-    let signatureCount, signatureThreshold: Int 
+    var emoji: String {
+        ["🔐","🧘🏿‍♂️","🧨","💡","🚁","🎯","🎨", "🛺", "🚦"].randomElement()!
+    }
+    let signatureCount, signatureThreshold: Int
 }
 
 
