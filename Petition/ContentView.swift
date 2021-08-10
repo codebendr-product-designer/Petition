@@ -60,7 +60,7 @@ struct ContentView_Previews: PreviewProvider {
             
             PetitionDetailView(petition: petition)
                 .environment(\.colorScheme, .dark)
-                .ignoresSafeArea(.all)
+            
         }
     }
 }
