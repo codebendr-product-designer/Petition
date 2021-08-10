@@ -13,7 +13,7 @@ extension URLSession {
         from url: URL,
         keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
         dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .deferredToData,
-        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate
+        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .secondsSince1970
     ) async throws -> T {
         //try and wait for data
         let (data, _) = try await data(from: url)
